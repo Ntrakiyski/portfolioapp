@@ -14,7 +14,7 @@ export default function Navigation({ isOpened }) {
   // console.log("i am at", where.pathname);
 
   const { loading, error, data } = useFetch(
-    "http://localhost:1337/api/navigations?populate=*"
+    "https://trakiyski-portfolio-backend.herokuapp.com/api/navigations?populate=*"
   );
 
   if (loading) return <LoadingIndicator />;
@@ -24,8 +24,8 @@ export default function Navigation({ isOpened }) {
     <Styles>
       <motion.div
         className="navs flex-column"
-        variants={variants} 
-        initial="hidden" 
+        variants={variants}
+        initial="hidden"
         animate="enter"
         exit="exit"
       >
@@ -49,7 +49,7 @@ export default function Navigation({ isOpened }) {
               >
                 <img
                   src={
-                    `http://localhost:1337` +
+                    `https://trakiyski-portfolio-backend.herokuapp.com` +
                     nav.attributes.image.data.attributes.url
                   }
                   alt={nav.attributes.image.data.attributes.name}

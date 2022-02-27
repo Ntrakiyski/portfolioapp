@@ -8,7 +8,7 @@ import useFetch from "../hooks/useFetch";
 
 export default function HomePage() {
   const { loading, error, data } = useFetch(
-    "http://localhost:1337/api/home-page?populate=*"
+    "https://trakiyski-portfolio-backend.herokuapp.com/api/home-page?populate=*"
   );
 
   if (loading) return <LoadingIndicator />;
@@ -19,7 +19,7 @@ export default function HomePage() {
       <img
         className="head-image"
         src={
-          `http://localhost:1337` +
+          `https://trakiyski-portfolio-backend.herokuapp.com` +
           data.attributes.headImage.data.attributes.url
         }
         alt={data.attributes.headImage.data.attributes.hash}

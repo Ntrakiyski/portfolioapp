@@ -11,7 +11,7 @@ export default function Blog() {
   const [isOpened, setIsOpened] = useState(true);
 
   const { loading, error, data } = useFetch(
-    "http://localhost:1337/api/posts?populate=*"
+    "https://trakiyski-portfolio-backend.herokuapp.com/api/posts?populate=*"
   );
 
   if (loading) return <LoadingIndicator />;
@@ -28,7 +28,7 @@ export default function Blog() {
                 <div className="visits">{post.attributes.visits}</div>
                 <img
                   src={
-                    `http://localhost:1337` +
+                    `https://trakiyski-portfolio-backend.herokuapp.com` +
                     post.attributes.banner.data.attributes.url
                   }
                   alt={post.attributes.banner.data.attributes.name}

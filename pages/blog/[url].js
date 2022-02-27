@@ -12,7 +12,7 @@ export default function PostPage() {
   const slug = useRouter().query.url;
 
   const { loading, error, data } = useFetch(
-    `http://localhost:1337/api/posts?filters[slug][$eq]=${slug}&populate=*`
+    `https://trakiyski-portfolio-backend.herokuapp.com/api/posts?filters[slug][$eq]=${slug}&populate=*`
   );
 
   if (loading) return <LoadingIndicator />;
@@ -26,7 +26,7 @@ export default function PostPage() {
             <h1>{post.attributes.title}</h1>
             <img
               src={
-                `http://localhost:1337` +
+                `https://trakiyski-portfolio-backend.herokuapp.com` +
                 post.attributes.banner.data.attributes.url
               }
               alt={post.attributes.banner.data.attributes.hash}
