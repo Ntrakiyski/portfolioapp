@@ -17,7 +17,11 @@ export default function Stack() {
         <div className="stack-category" key={stack.id}>
           <h5>{stack.attributes.title}</h5>
           {stack.attributes.logos.data.map((ket) => (
-            <img src={URL + ket.attributes.url} alt={ket.attributes.hash} />
+            <img
+              key={ket.id}
+              src={URL + ket.attributes.url}
+              alt={ket.attributes.hash}
+            />
           ))}
         </div>
       ))}
