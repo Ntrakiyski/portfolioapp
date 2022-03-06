@@ -1,4 +1,3 @@
-import Image from "next/image";
 import ImageSlideshow from "./ImageSlideshow";
 import LoadingIndicator from "./LoadingIndicator";
 
@@ -6,10 +5,10 @@ import styled from "styled-components";
 
 import useFetch from "../hooks/useFetch";
 
+let URL = "http://localhost:1337";
+
 export default function HomePage() {
-  const { loading, error, data } = useFetch(
-    "https://trakiyski-portfolio-backend.herokuapp.com/api/home-page?populate=*"
-  );
+  const { loading, error, data } = useFetch(URL + "/api/home-page?populate=*");
 
   if (loading) return <LoadingIndicator />;
   if (error) return <p>Error :(</p>;
@@ -18,10 +17,7 @@ export default function HomePage() {
     <Styles>
       <img
         className="head-image"
-        src={
-          `https://trakiyski-portfolio-backend.herokuapp.com` +
-          data.attributes.headImage.data.attributes.url
-        }
+        src={URL + data.attributes.headImage.data.attributes.url}
         alt={data.attributes.headImage.data.attributes.hash}
       />
       <h1>
@@ -37,7 +33,7 @@ const Styles = styled.div`
   align-items: center;
   justify-content: start;
   flex-direction: column;
-  padding: 20px;
+
   h1 {
     font-family: "Mukta", sans-serif;
     font-size: 45px;
@@ -49,7 +45,7 @@ const Styles = styled.div`
     }
   }
   .head-image {
-    margin: 40px 0 60px 0;
+    margin: 0px 0 60px 0;
     max-width: 107px;
   }
 `;

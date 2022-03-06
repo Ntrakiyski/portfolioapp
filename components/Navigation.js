@@ -8,13 +8,15 @@ import { variants, item } from "./Animations";
 
 import { motion } from "framer-motion";
 
+let URL = "http://localhost:1337";
+
 export default function Navigation({ isOpened }) {
   const where = useRouter();
   const currentLocation = where.pathname;
   // console.log("i am at", where.pathname);
 
   const { loading, error, data } = useFetch(
-    "https://trakiyski-portfolio-backend.herokuapp.com/api/navigations?populate=*"
+    URL + "/api/navigations?populate=*"
   );
 
   if (loading) return <LoadingIndicator />;
@@ -48,10 +50,7 @@ export default function Navigation({ isOpened }) {
                 }
               >
                 <img
-                  src={
-                    `https://trakiyski-portfolio-backend.herokuapp.com` +
-                    nav.attributes.image.data.attributes.url
-                  }
+                  src={URL + nav.attributes.image.data.attributes.url}
                   alt={nav.attributes.image.data.attributes.name}
                 />
 
@@ -66,7 +65,7 @@ export default function Navigation({ isOpened }) {
 
 const Styles = styled.div`
   .navs {
-    position: absolute;
+    position: fixed;
     bottom: 30px;
     right: 0px;
     .nav-tab {

@@ -1,6 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700;800&family=Noto+Sans:wght@400;700&display=swap");
 //font-family: "Mukta", sans-serif;
 
+// Colors
+
+$white: #efefef;
+$green: #84b58b;
+$darkBlue: #84aeb5;
+$purp: #8491b5;
+$brown: #b58b84;
+$lightBlue: #b0cde7;
+$yellow: #e7d8b0;
+$grey: #6c6c6c;
+$dark: #323232;
+
 * {
   margin: 0;
   padding: 0;
@@ -8,13 +20,19 @@
 
 body {
   font-family: "Noto Sans", sans-serif;
-  background: #efefef;
-  color: #323232;
+  background: $white;
+  color: $dark;
   overflow-x: hidden;
+  padding: 15px;
+  padding-top: 60px;
 }
 a {
   color: inherit;
   text-decoration: none;
+}
+
+h3 {
+  color: $grey;
 }
 
 .flex-center {

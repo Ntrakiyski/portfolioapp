@@ -7,12 +7,14 @@ import LoadingIndicator from "../../components/LoadingIndicator";
 
 import { useState } from "react";
 
+let URL = "http://localhost:1337";
+
 export default function PostPage() {
   const [isOpened, setIsOpened] = useState(true);
   const slug = useRouter().query.url;
 
   const { loading, error, data } = useFetch(
-    `https://trakiyski-portfolio-backend.herokuapp.com/api/posts?filters[slug][$eq]=${slug}&populate=*`
+    URL + "/api/posts?filters[slug][$eq]=${slug}&populate=*"
   );
 
   if (loading) return <LoadingIndicator />;
@@ -25,10 +27,7 @@ export default function PostPage() {
           <div className="post" key={post.id}>
             <h1>{post.attributes.title}</h1>
             <img
-              src={
-                `https://trakiyski-portfolio-backend.herokuapp.com` +
-                post.attributes.banner.data.attributes.url
-              }
+              src={URL + post.attributes.banner.data.attributes.url}
               alt={post.attributes.banner.data.attributes.hash}
             />
             <p>{post.attributes.content}</p>

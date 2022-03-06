@@ -7,12 +7,12 @@ import Navigation from "../../components/Navigation";
 import { useState } from "react";
 import LoadingIndicator from "../../components/LoadingIndicator";
 
+let URL = "http://localhost:1337";
+
 export default function Blog() {
   const [isOpened, setIsOpened] = useState(true);
 
-  const { loading, error, data } = useFetch(
-    "https://trakiyski-portfolio-backend.herokuapp.com/api/posts?populate=*"
-  );
+  const { loading, error, data } = useFetch(URL + "/api/posts?populate=*");
 
   if (loading) return <LoadingIndicator />;
   if (error) return <p>Error :(</p>;
@@ -27,10 +27,7 @@ export default function Blog() {
                 <h1>{post.attributes.title}</h1>
                 <div className="visits">{post.attributes.visits}</div>
                 <img
-                  src={
-                    `https://trakiyski-portfolio-backend.herokuapp.com` +
-                    post.attributes.banner.data.attributes.url
-                  }
+                  src={URL + post.attributes.banner.data.attributes.url}
                   alt={post.attributes.banner.data.attributes.name}
                 />
               </div>

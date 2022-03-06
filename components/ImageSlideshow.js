@@ -9,12 +9,12 @@ import useFetch from "../hooks/useFetch";
 import { motion } from "framer-motion";
 import { imageSLideshow } from "./Animations";
 
+let URL = "http://localhost:1337";
+
 export default function ImageSlideshow() {
   const [count, setCount] = useState(0);
 
-  const { loading, error, data } = useFetch(
-    "https://trakiyski-portfolio-backend.herokuapp.com/api/home-page?populate=*"
-  );
+  const { loading, error, data } = useFetch(URL + "/api/home-page?populate=*");
 
   useEffect(() => {
     const intervalID = setTimeout(() => {
@@ -36,10 +36,7 @@ export default function ImageSlideshow() {
     >
       <div className="div">
         <img
-          src={
-            `https://trakiyski-portfolio-backend.herokuapp.com` +
-            data.attributes.banners.data[count].attributes.url
-          }
+          src={URL + data.attributes.banners.data[count].attributes.url}
           alt={data.attributes.banners.data[count].attributes.hash}
         />
       </div>
